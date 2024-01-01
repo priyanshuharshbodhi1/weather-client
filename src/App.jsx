@@ -6,6 +6,7 @@ import temp from "./assets/temp.svg";
 import humidity from "./assets/humidity.svg";
 import rain from "./assets/rain.svg";
 import wind from "./assets/wind.svg";
+import mist from "./assets/mist.svg";
 
 const App = () => {
   useEffect(() => {
@@ -21,7 +22,7 @@ const App = () => {
   const handleFetchWeather = async () => {
     try {
       // Replace 'YOUR_SERVER_URL' with the actual URL of your Express server
-      const serverUrl = 'http://localhost:4000/api/weather';
+      const serverUrl = "http://localhost:4000/api/weather";
 
       const response = await axios.post(serverUrl, {
         latitude: latitude,
@@ -30,13 +31,11 @@ const App = () => {
 
       setWeatherData(response.data);
     } catch (error) {
-      console.error('Error fetching weather data:', error);
+      console.error("Error fetching weather data:", error);
     }
   };
 
-
-
-  console.log(weatherData.main);
+  console.log(weatherData);
 
   function getLocation() {
     if (navigator.geolocation) {
@@ -59,12 +58,33 @@ const App = () => {
           position.coords.longitude
       );
 
-      setLatitude(position.coords.latitude)
-      setLongitude(position.coords.longitude)
+      setLatitude(position.coords.latitude);
+      setLongitude(position.coords.longitude);
     } else {
       console.log("Position object is undefined.");
     }
   }
+
+  
+  //For Time and Date on UI
+  const [date, setDate] = useState(new Date());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setDate(new Date());
+    }, 60000); // update every minute
+
+    return () => {
+      clearInterval(timer); // cleanup on component unmount
+    };
+  }, []);
+
+  const dateToString = date.toString();
+  const dateString = dateToString.slice(0, dateToString.indexOf("GMT"));
+
+  const dateParts = dateString.split(" ");
+  const formattedDate = `${dateParts.slice(0, 4).join(" ")}`;
+  const formattedTime = `${dateParts.slice(4).join(" ")}`;
 
   return (
     <>
@@ -77,14 +97,14 @@ const App = () => {
             <div className={styles.weather}>Overcast Clound</div>
             <div className={styles.location}>Toronto</div>
             <div className={styles.date}>
-              22/22/22
-              <div className={styles.date}></div>
+              {formattedDate}
+              <div className={styles.time}>{formattedTime}</div>
             </div>
 
             <div className={styles.temperature}>19 &deg;C</div>
             <div
               className={styles.temperatureIcon}
-              style={{ backgroundImage: `url(${rain})` }}
+              style={{ backgroundImage: `url(${mist})` }}
             ></div>
           </div>
           <div className={styles.rightContainer}>
