@@ -7,11 +7,71 @@
 }
 
 .subContainer {
-    display: flex;
+  display: flex;
+  padding: 3rem;
+  
+  /* align-items: center; */
 }
 
-.leftContainer, .rightContainer {
-    flex: 1;
+.leftContainer{
+  flex: 1;
+  color: #fff;
+}
+
+.rightContainer{
+    width: 20%;
+}
+
+.weather {
+  font-size: 2rem;
+  font-weight: 500;
+  text-wrap: nowrap;
+}
+
+.temperature {
+  font-size: 4rem;
+  font-weight: 800;
+  padding-top: 1rem;
+}
+
+.temperatureIcon {
+  height: 60px;
+  width: 60px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.date,
+.location {
+  padding-top: 0.8rem;
+}
+
+.rightContainer {
+  color: #fff;
+  /* padding-left: 65%; */
+}
+
+.rightSubContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.rightHeading {
+  font-size: 0.75rem;
+}
+
+.rightvalue {
+  font-weight: 500;
+  font-size: 1.7rem;
+}
+
+.temp,
+.rain,
+.humidity,
+.wind {
+  display: flex;
+  gap: 1rem;
 }
 
 .icon {
