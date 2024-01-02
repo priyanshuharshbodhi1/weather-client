@@ -4,7 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import styles from "./App.module.css";
-import BackgroundImage from "./assets/background.jpeg";
+import BackgroundImage from "./assets/background.png";
 import temp from "./assets/temp.svg";
 import humidity from "./assets/humidity.svg";
 import rain from "./assets/rain.svg";
