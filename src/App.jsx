@@ -36,7 +36,7 @@ const App = () => {
   
     try {
       
-      const serverUrl = 'https://weather-app-server-p520.onrender.com';// "http://localhost:4000/api/weather";
+      const serverUrl = 'https://weather-app-server-p520.onrender.com/api/weather';// "http://localhost:4000/api/weather";
   
       const response = await axios.post(serverUrl, null, {
         headers: {
