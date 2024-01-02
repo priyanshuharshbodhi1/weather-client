@@ -6,7 +6,7 @@ import temp from "./assets/temp.svg";
 import humidity from "./assets/humidity.svg";
 import rain from "./assets/rain.svg";
 import wind from "./assets/wind.svg";
-import mist from "./assets/mist.svg";
+import cloudy from "./assets/cloudy.svg";
 
 const App = () => {
   useEffect(() => {
@@ -35,7 +35,7 @@ const App = () => {
     }
   };
 
-  console.log(weatherData);
+  console.log(weatherData.location);
 
   function getLocation() {
     if (navigator.geolocation) {
@@ -65,7 +65,6 @@ const App = () => {
     }
   }
 
-  
   //For Time and Date on UI
   const [date, setDate] = useState(new Date());
 
@@ -94,18 +93,21 @@ const App = () => {
       >
         <div className={styles.subContainer}>
           <div className={styles.leftContainer}>
-            <div className={styles.weather}>Overcast Clound</div>
-            <div className={styles.location}>Toronto</div>
-            <div className={styles.date}>
-              {formattedDate}
-              <div className={styles.time}>{formattedTime}</div>
+            <div>
+              <div className={styles.weather}>{weatherData?weatherData.weatherData.current.weather[0].description :"Overcast Cloud"}</div>
+              <div className={styles.location}>Toronto</div>
+              <div className={styles.date}>
+                {formattedDate}
+                <div className={styles.time}>{formattedTime}</div>
+              </div>
             </div>
-
-            <div className={styles.temperature}>19 &deg;C</div>
-            <div
-              className={styles.temperatureIcon}
-              style={{ backgroundImage: `url(${mist})` }}
-            ></div>
+            <div className={styles.leftSubContainer}>
+              <div className={styles.temperature}>{weatherData?Math.floor(weatherData.weatherData.current.temp-273)+ '°C' :"19 °C"}</div>
+              <div
+                className={styles.temperatureIcon}
+                style={{ backgroundImage: `url(${cloudy})` }}
+              ></div>
+            </div>
           </div>
           <div className={styles.rightContainer}>
             <div className={styles.rightSubContainer}>
@@ -116,7 +118,7 @@ const App = () => {
                 ></div>
                 <div>
                   <div className={styles.rightHeading}>Feels like</div>
-                  <div className={styles.rightvalue}>19&deg;C</div>
+                  <div className={styles.rightvalue}>{weatherData?Math.floor(weatherData.weatherData.current.feels_like-273) + '°C' :"19 °C"}</div>
                 </div>
               </div>
               <div className={styles.humidity}>
@@ -126,7 +128,7 @@ const App = () => {
                 ></div>
                 <div>
                   <div className={styles.rightHeading}>Humidity</div>
-                  <div className={styles.rightvalue}>40%</div>
+                  <div className={styles.rightvalue}>{weatherData?weatherData.weatherData.current.humidity +'%':"40 %"}</div>
                 </div>
               </div>
               <div className={styles.rain}>
@@ -136,7 +138,7 @@ const App = () => {
                 ></div>
                 <div>
                   <div className={styles.rightHeading}>Rain</div>
-                  <div className={styles.rightvalue}>76%</div>
+                  <div className={styles.rightvalue}>{weatherData?Math.floor(weatherData.weatherData.current.clouds) +'%':"25%"}</div>
                 </div>
               </div>
               <div className={styles.wind}>
@@ -146,7 +148,7 @@ const App = () => {
                 ></div>
                 <div>
                   <div className={styles.rightHeading}>Wind Speed</div>
-                  <div className={styles.rightvalue}>20 km/hr</div>
+                  <div className={styles.rightvalue}>{weatherData?Math.floor(weatherData.weatherData.current.wind_speed) +'km/hr':"20 km/hr"}</div>
                 </div>
               </div>
             </div>

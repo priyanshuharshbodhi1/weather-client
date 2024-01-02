@@ -9,17 +9,17 @@
 .subContainer {
   display: flex;
   padding: 3rem;
-  
+
   /* align-items: center; */
 }
 
-.leftContainer{
+.leftContainer {
   flex: 1;
   color: #fff;
 }
 
-.rightContainer{
-    width: 20%;
+.rightContainer {
+  width: 20%;
 }
 
 .weather {
@@ -80,4 +80,39 @@
   /* background-size: cover; */
   background-position: center;
   background-repeat: no-repeat;
+}
+
+@media (max-width: 700px) {
+  .rightContainer {
+    width: 100%;
+    /* flex: 1; */
+  }
+
+  .leftContainer {
+    /* height: 60%; */
+    /* display: flex; */
+  }
+
+  .temperature {
+    padding-top: 0;
+  }
+
+  .subContainer {
+    flex-direction: column;
+    padding: 1.5rem;
+    height: -webkit-fill-available;
+    padding-bottom: 8rem;
+  }
+
+  .rightSubContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .leftSubContainer {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1rem;
+  }
 }
