@@ -18,6 +18,7 @@
 .leftContainer {
   flex: 1;
   color: #fff;
+  padding-left: 8rem;
 }
 
 .rightContainer {
@@ -93,6 +94,7 @@
   .leftContainer {
     /* height: 60%; */
     /* display: flex; */
+    padding-left: 0;
   }
 
   .temperature {
